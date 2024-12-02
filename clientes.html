@@ -29,11 +29,11 @@
           <a href="habitaciones.html" class="nav-link text-white"><i class="bi bi-door-open"></i> Habitaciones</a>
         </li>
         <li class="nav-item mb-2">
-          <a href="clientes.html" class="nav-link text-white "><i class="bi bi-people"></i> Clientes</a>
+          <a href="usuarios.html" class="nav-link text-white active"><i class="bi bi-people"></i> Clientes</a>
         </li>
         <li class="nav-item mb-2">
-            <a href="usuarios.html" class="nav-link text-white active"><i class="bi bi-people"></i> Usuarios</a>
-        </li>
+          <a href="usuarios.html" class="nav-link text-white"><i class="bi bi-people"></i> Usuarios</a>
+      </li>
       </ul>
     </nav>
 
@@ -41,7 +41,7 @@
     <div class="flex-grow-1 bg-light">
         <!-- Encabezado -->
         <header class="bg-dark text-white p-3 d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Gestión de usuarios</h5>
+          <h5 class="mb-0">Gestión de Clientes</h5>
           <span>Administrador <i class="bi bi-power"></i></span>
         </header>
   
@@ -50,7 +50,7 @@
           <!-- Barra de búsqueda -->
         <div class="container-fluid mb-4">
             <form method="GET" class="d-flex ms-auto" role="search" style="max-width: 400px;">
-                <input class="form-control me-2" name="buscar" type="search" placeholder="Buscar usuario..." aria-label="Search">
+                <input class="form-control me-2" name="buscar" type="search" placeholder="Buscar cliente..." aria-label="Search">
                 <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
         </div>
@@ -58,16 +58,15 @@
           <!-- Tabla de clientes -->
           <div class="card shadow">
             <div class="card-body">
-              <h5 class="card-title">Lista de usuarios</h5>
+              <h5 class="card-title">Lista de Clientes</h5>
               <table class="table table-bordered table-striped text-center" id="clientTable">
                 <thead class="table-dark">
                   <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Email</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
-                    <th>Accion</th>
+                    <th>Teléfono</th>
+                    <th>Acción</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,36 +74,30 @@
                     <td>1</td>
                     <td>Juan Pérez</td>
                     <td>juan.perez@example.com</td>
-                    <td>Administrador</td>
-                    <td>**********</td>
+                    <td>+123 456 789</td>
                     <td>
                       <button class="btn btn-primary btn-sm">Editar</button>
                       <button class="btn btn-danger btn-sm">Eliminar</button>
-                      <button class="btn btn-warning btn-sm">Recuperar contraseña</button>
                     </td>
                   </tr>
                   <tr>
                     <td>2</td>
                     <td>Maria López</td>
                     <td>maria.lopez@example.com</td>
-                    <td>Recepcionista</td>
-                    <td>***********</td>
+                    <td>+987 654 321</td>
                     <td>
                       <button class="btn btn-primary btn-sm">Editar</button>
                       <button class="btn btn-danger btn-sm">Eliminar</button>
-                      <button class="btn btn-warning btn-sm">Recuperar contraseña</button>
                     </td>
                   </tr>
                   <tr>
                     <td>3</td>
                     <td>Carlos González</td>
                     <td>carlos.gonzalez@example.com</td>
-                    <td>Recepcionista</td>
-                    <td>***********</td>
+                    <td>+567 890 123</td>
                     <td>
                       <button class="btn btn-primary btn-sm">Editar</button>
                       <button class="btn btn-danger btn-sm">Eliminar</button>
-                      <button class="btn btn-warning btn-sm">Recuperar contraseña</button>
                     </td>
                   </tr>
                   <!-- Agregar más filas aquí -->
