@@ -26,7 +26,7 @@
           <a href="checkout.html" class="nav-link text-white"><i class="bi bi-arrow-left-circle"></i> Check Out</a>
         </li>
         <li class="nav-item mb-2">
-          <a href="habitaciones.php" class="nav-link text-white"><i class="bi bi-door-open"></i>Habitaciones</a>
+          <a href="habitaciones.php" class="nav-link text-white active"><i class="bi bi-door-open"></i>Habitaciones</a>
         </li>
         <li class="nav-item mb-2">
           <a href="servicio.php" class="nav-link text-white"><i class="bi bi-door-open"></i> Servicio</a>
@@ -35,7 +35,7 @@
           <a href="clientes.html" class="nav-link text-white "><i class="bi bi-people"></i> Clientes</a>
         </li>
         <li class="nav-item mb-2">
-            <a href="usuarios.php" class="nav-link text-white active"><i class="bi bi-people"></i> Usuarios</a>
+            <a href="usuarios.php" class="nav-link text-white "><i class="bi bi-people"></i> Usuarios</a>
         </li>
       </ul>
     </nav>
@@ -44,7 +44,7 @@
     <div class="container-fluid fondo-dashboard">
         <!-- Encabezado -->
         <header class="bg-dark text-white p-3 d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Gestión de usuarios</h5>
+          <h5 class="mb-0">Gestión de habitaciones</h5>
           <span>Administrador <i class="bi bi-power"></i></span>
         </header>
   
@@ -54,11 +54,11 @@
         
           <!-- Barra de búsqueda -->
           <div class="container-fluid d-flex justify-content-end align-items-center mb-3">
-            <a href="#" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#agregarUsuarioModal">
-              <i class="bi bi-person-plus-fill"></i>
+            <a href="#" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#agregarHabitacionModal">Agregar habitacion
+            <i class="bi bi-plus"></i>
             </a>
             <form method="GET" class="d-flex" role="search" style="max-width: 400px;">
-              <input class="form-control me-2" name="buscar" type="search" placeholder="Buscar usuario..." aria-label="Search">
+              <input class="form-control me-2" name="buscar" type="search" placeholder="Buscar habitacion..." aria-label="Search">
               <button class="btn btn-primary" type="submit">Buscar</button>
             </form>
           </div>
@@ -66,42 +66,43 @@
           <!-- Tabla de clientes -->
           <div class="card shadow">
             <div class="card-body">
-              <h5 class="card-title">Lista de usuarios</h5>
+              <h5 class="card-title">Lista de habitaciones</h5>
               <table class="table table-bordered table-striped text-center">
                 <thead class="table-dark">
                   <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Contraseña</th>
+                    <th>Numero de la habitacion</th>
+                    <th>Categoria</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
                     <?php
-                    include 'mostrar_usuarios.php'; 
+                    include 'mostrar_habitaciones.php'; 
                     if (mysqli_num_rows($query) > 0):
                         while ($row = mysqli_fetch_array($query)): ?>
                             <tr>
-                                <td><?= $row['id_usuario']; ?></td>
-                                <td><?= $row['nombre']; ?></td>
-                                <td><?= $row['email']; ?></td>
-                                <td><?= $row['rol']; ?></td>
-                                <td>********</td> 
+                                <td><?= $row['id_habitacion']; ?></td>
+                                <td><?= $row['numero']; ?></td>
+                                <td><?= $row['categoria']; ?></td>
+                                <td><?= $row['descripcion']; ?></td>
+                                <td><?= $row['precio']; ?></td>
+                                <td><?= $row['estado']; ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id_usuario=<?= $row['id_usuario']; ?>" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="eliminar_usuario.php?id_usuario=<?= $row['id_usuario']; ?>" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" 
-                                        data-id="<?= $row['id_usuario']; ?>">
+                                    <a href="editar_habitacion.php?id_habitacion=<?= $row['id_habitacion']; ?>" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="eliminar_habitacion.php?id_habitacion=<?= $row['id_habitacion']; ?>" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" 
+                                        data-id="<?= $row['id_habitacion']; ?>">
                                             Eliminar
                                     </a>
-                                    <a href="recu_contra_usu.php?id_usuario=<?= $row['id_usuario']; ?>" class="btn btn-sm btn-warning">Recuperar Contraseña</a>
                                 </td>
                             </tr>
                         <?php endwhile;
                     else: ?>
                         <tr>
-                            <td colspan="10" class="text-center">No hay usuarios registrados</td>
+                            <td colspan="10" class="text-center">No hay habitaciones registradas</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
@@ -113,55 +114,61 @@
     </div>
     
    
-    <div class="modal fade" id="agregarUsuarioModal" tabindex="-1" aria-labelledby="agregarUsuarioLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          
-          <div class="modal-header">
-            <h5 class="modal-title" id="agregarUsuarioLabel">Agregar Usuario</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-       
-          <div class="modal-body">
-            <form method="POST" action="agregar_usuario.php">
-              <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="rol" class="form-label">Rol</label>
-                <select class="form-select" id="rol" name="rol" required>
-                  <option value="">Selecciona un rol</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Recepcionista">Recepcionista</option>
-                </select>
-              </div>
-
-              <div class="mb-3">
-                <label for="contrasena" class="form-label">Contraseña:</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
-                    <button class="btn btn-primary" type="button" id="togglePassword">
-                        <i class="bi bi-eye"></i> <!-- Ícono del ojo -->
-                    </button>
-                </div>
+    <div class="modal fade" id="agregarHabitacionModal" tabindex="-1" aria-labelledby="agregarHabitacionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Encabezado del modal -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarHabitacionLabel">Agregar Habitaciom</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- Cuerpo del modal -->
+        <div class="modal-body">
+          <form method="POST" action="agregar_habitacion.php">
+            <div class="mb-3">
+              <label for="numero" class="form-label">Numero de habitacion</label>
+              <input type="number" class="form-control" id="numero" name="numero" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="categoria" class="form-label">Categoria</label>
+              <select class="form-select" id="categoria" name="categoria" required>
+                <option value="">Selecciona una categoria</option>
+                <option value="Simple">Simple</option>
+                <option value="Matrimonial">Matrimonial</option>
+                <option value="Deluxe">Deluxe</option>
+              </select>
             </div>
 
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
-              </div>
-            </form>
-          </div>
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="numero" class="form-label">precio</label>
+              <input type="number" class="form-control" id="precio" name="precio" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado</label>
+              <select class="form-select" id="estado" name="estado" required>
+                <option value="">Selecciona un estado</option>
+                <option value="Disponible">Disponible</option>
+                <option value="No disponible">No disponible</option>
+              </select>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+
       
 
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
@@ -177,7 +184,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 
-                <a href="eliminar_usuario.php?id_usuario=<?= $row['id_usuario']; ?>" id="confirmDeleteButton" class="btn btn-danger">Eliminar</a>
+                <a href="eliminar_habitacion.php?id_habitacion=<?= $row['id_habitacion']; ?>" id="confirmDeleteButton" class="btn btn-danger">Eliminar</a>
             </div>
         </div>
       </div>
@@ -188,23 +195,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
   <script>
-            document.getElementById('togglePassword').addEventListener('click', function () {
-            const passwordField = document.getElementById('contrasena');
-            const passwordButton = document.getElementById('togglePassword');
-            const icon = passwordButton.querySelector('i');
-
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                icon.classList.remove('bi-eye');
-                icon.classList.add('bi-eye-slash'); 
-            } else {
-                passwordField.type = 'password';
-                icon.classList.remove('bi-eye-slash');
-                icon.classList.add('bi-eye'); 
-            }
-        });
-    </script>
-    <script>
     
     const confirmDeleteModal = document.getElementById('confirmDeleteModal');
     confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
@@ -216,8 +206,8 @@
 
         
         const confirmDeleteButton = document.getElementById('confirmDeleteButton');
-        confirmDeleteButton.href = `eliminar_usuario.php?id_usuario=${id}`;
+        confirmDeleteButton.href = `eliminar_habitacion.php?id_habitacion=${id}`;
     });
-    </script>
+  </script>
 </body>
 </html>
