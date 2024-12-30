@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="nosotros.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg position-absolute w-100" style="z-index: 10;">
+        <div class="container-fluid">
+          <a name="logo" class="navbar-brand fs-4" href="inicio.php">
+            <img src="/Polish_20241209_103533177.webp" alt="logo" width="150" height="150">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="nosotros.html">Nosotros</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link " href="faqs.html">Servicios</a>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="banner">
+      <div>
+          <img src="/dunas.jpg">
+      </div>
+    </section>
+    <section class="services">
+        <div class="container">
+          <!-- Título de la sección -->
+          <div class="text-center ">
+            <h2 class="fw-bold">Nuestros Servicios</h2>
+            <hr class="mx-auto" style="width: 80px; height: 3px; background-color: #f3b33d; border: none;">
+          </div>
+          <!-- Fila de servicios -->
+          <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <img src="/spa.jpeg" class="card-img-top" alt="Web Design">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">SPA profesional</h5>
+                  <p class="card-text">Relájate y renueva tus sentidos en nuestro exclusivo spa, donde cada detalle está diseñado para tu bienestar.</p>
+                  <button type="button" class="btn btn-outline-primary">Reservar</button>
+                </div>
+              </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <img src="/gym.jpeg" class="card-img-top" alt="Graphic Design">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">GYM</h5>
+                  <p class="card-text">Mantén tu rutina fitness incluso en tus vacaciones con equipos de última generación y un ambiente motivador.</p>
+                  <button type="button" class="btn btn-outline-primary">Reservar</button>
+                </div>
+              </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4">
+              <div class="card shadow-sm">
+                <img src="piscina-temparada-05.jpg" class="card-img-top" alt="Content Creation">
+                <div class="card-body text-center">
+                  <h5 class="card-title fw-bold">Piscina temperada</h5>
+                  <p class="card-text">Sumérgete en nuestra piscina temperada y disfruta de un oasis de tranquilidad en cualquier época del año.</p>
+                  <button type="button" class="btn btn-outline-primary">Reservar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer >
+        <div class="footer-container">
+          <!-- Menú de navegación -->
+          <div class="footer-menu">
+            <ul class="nav col-12">
+              <li class="nav-item"><a href="inicio.php" class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a href="nosotros.html" class="nav-link px-2 text-body-secondary">Quienes Somos</a></li>
+              <li class="nav-item"><a href="servicios.html" class="nav-link px-2 text-body-secondary">Servicios</a></li>
+              <li class="nav-item"><a href="faqs.html" class="nav-link px-2 text-body-secondary">Preguntas Frecuentes</a></li>
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-logo">
+            <img src="/Polish_20241209_103533177.webp" alt="Logo" width="150" height="150">
+          </div>
+          <!-- Texto de crédito -->
+          <div class="footer-credit justify-content-end">
+            <p>Hotel Oasis</p>
+          </div>
+        </div>
+      </footer>
+    <!-- Bootstrap JS y Iconos --> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+<body>
+</html>
