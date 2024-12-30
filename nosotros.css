@@ -1,0 +1,39 @@
+body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+}
+.header{
+    grid-row: 1;
+    grid-column: 1 / span 3;
+    background-size: cover;
+    min-height: 100vh;
+}
+.header> nav{
+    background-color: transparent !important;
+}
+input{
+    width: 55%;
+}
+section{
+    grid-column: 1 / span 3;
+    grid-row: 1 ;
+}
+.banner> div> img{
+    height: 30%;
+    width: 100%;
+}
+.mvh{
+    grid-row: 2;
+    grid-column: span 3;
+    text-align: center;
+    margin: 5%;
+    box-shadow: 0 10px ;
+}
+.v{
+    padding: 5%;
+}
+.footer-container{
+    display: flex;
+    list-style: none;
+}
